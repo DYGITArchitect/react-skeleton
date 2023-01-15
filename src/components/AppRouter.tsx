@@ -1,9 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 import {publicRouter} from '../routes/publicRouter';
 import { privateRouter } from '../routes/privateRouter';
+import { useTypeSelector } from '../hooks/useTypedSelector';
 
 const AppRouter = () => {
-    const auth = false
+    const { isAuth } = useTypeSelector(state => state.auth)
         
     // const elem = React.createElement(About)
 
@@ -18,7 +19,7 @@ const AppRouter = () => {
     // </Routes>
     // );
     return (
-            !auth
+            !isAuth
             ?  
             <Routes>
             {publicRouter.map(route => 

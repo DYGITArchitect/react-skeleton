@@ -5,7 +5,7 @@ import React, { FC } from 'react';
 const Footer : FC = () => {
   return(
   <Layout.Footer>
-    <Row justify="center">HELLO</Row>
+    <Row justify="center">FOOTER</Row>
   </Layout.Footer>);
 };
  

@@ -3,18 +3,18 @@ import NavBar from './components/NavBar';
 import { Layout } from 'antd';
 import Footer from './components/Fotter';
 import AppRouter from './components/AppRouter';
+import { Content } from 'antd/es/layout/layout';
+import './App.css';
 
 const App:FC = () => {
   
   return(<div>      
-      <Layout>
-        {/* <RouterProvider router={auth?privateRouter:router}  />       */}        
+      <Layout className="layout">
         <NavBar />
-        <Layout.Content>          
-        <AppRouter />
-          WORKING ...
-        </Layout.Content>
-        <Footer />
+        <Content className="site-layout-content">          
+          <AppRouter />          
+        </Content>
+        <Footer/>
       </Layout>    
   </div>);
 };
