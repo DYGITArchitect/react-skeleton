@@ -1,32 +1,15 @@
 import Main from "../pages/Main";
 import Login from "../pages/Login";
-import { RoutesNames } from "./index";
-import { createBrowserRouter, Navigate } from "react-router-dom";
-import Error from "../pages/Error";
+import { RoutesNames, IRoute } from "./index";
+import { Navigate } from "react-router-dom";
 import TrainingList from "../pages/TrainingList";
 import About from "../pages/About";
+import React from "react";
 
-export const router = createBrowserRouter([
-    {
-        path: RoutesNames.MAIN,
-        element: <Main />,
-        errorElement: <Error />
-    },  
-    {
-        path: RoutesNames.LOGIN,
-        element: <Login />
-    },
-    {
-        path: RoutesNames.TRAINIGLIST,
-        element: <TrainingList />
-    },  
-    {
-        path: RoutesNames.ABOUT,
-        element: <About />
-    },  
-    {
-        path: "*",
-        element: <Navigate to="/" replace />
-    },
-])
-
+export const publicRouter: IRoute[] = [
+    {path: RoutesNames.MAIN, element: React.createElement(Main)},
+    {path: RoutesNames.ABOUT, element: React.createElement(About)},
+    {path: RoutesNames.LOGIN, element: React.createElement(Login)},
+    {path: RoutesNames.TRAINIGLIST, element: React.createElement(TrainingList)},
+    {path: "*", element: <Navigate to="/" replace />}
+]

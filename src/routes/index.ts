@@ -6,3 +6,8 @@ export enum RoutesNames{
     ABOUT = "about",
     TRAINIGLIST = "trainings"
 }
+
+export interface IRoute {
+    path: string;
+    element: React.ReactNode;
+}
