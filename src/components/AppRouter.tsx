@@ -1,23 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
 import {publicRouter} from '../routes/publicRouter';
 import { privateRouter } from '../routes/privateRouter';
-import { useTypeSelector } from '../hooks/useTypedSelector';
+import { useAppSelector } from '../hooks/redux';
 
 const AppRouter = () => {
-    const { isAuth } = useTypeSelector(state => state.auth)
-        
-    // const elem = React.createElement(About)
+    const { isAuth } = useAppSelector(state => state.authReducer)
 
-    // return(     
-    // <Routes>        
-    //     <Route path={RoutesNames.MAIN} element={<Main/>} errorElement={<Error/>}/>
-    //     <Route path={RoutesNames.COURSELIST} element={<CourseList/>}/>
-    //     <Route path={RoutesNames.LOGIN} element={<Login/>} />
-    //     <Route path={RoutesNames.TRAINIGLIST} element={<TrainingList />} />
-    //     <Route path={RoutesNames.ABOUT} element={elem} />
-    //     <Route path="*" element={<Navigate to="/" replace />}/>        
-    // </Routes>
-    // );
     return (
             !isAuth
             ?  

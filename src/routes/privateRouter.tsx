@@ -11,5 +11,5 @@ export const privateRouter: IRoute[] = [
     {path: RoutesNames.ABOUT, element: React.createElement(About)},    
     {path: RoutesNames.TRAINIGLIST, element: React.createElement(TrainingList)},
     {path: RoutesNames.COURSELIST, element: React.createElement(CourseList)},
-    {path: "*", element: <Navigate to="/" replace />}
+    {path: "*", element: <Navigate to="/" replace />} // если логин корректный, то отрабатывает этот переход
 ]

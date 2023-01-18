@@ -1,8 +1,9 @@
 import { Layout, Menu, MenuProps, Row } from 'antd';
 import React, { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTypeSelector } from '../hooks/useTypedSelector';
+import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { RoutesNames } from "../routes/index";
+import { authSlice } from '../store/reducers/auth';
 
 export interface INavBarItems {
   key: number;
@@ -11,7 +12,9 @@ export interface INavBarItems {
 
 const NavBar : FC = () => {
     const navigate = useNavigate()
-    const { isAuth } = useTypeSelector(state => state.auth)
+    const { isAuth, user} = useAppSelector(state => state.authReducer)
+    const {setAuthAction} = authSlice.actions
+    const dispatch = useAppDispatch()
 
     const menuItems: INavBarItems[] = []
 
@@ -25,13 +28,12 @@ const NavBar : FC = () => {
       )
 
     const onClick: MenuProps['onClick'] = (e) => {
-        console.log(e);
-
         switch(e.key) {
           case '1':
             navigate(RoutesNames.LOGIN)
             break;
-          case '100':            
+          case '100':
+            dispatch(setAuthAction(false))             
             navigate(RoutesNames.MAIN)
             break;          
         }
@@ -39,11 +41,9 @@ const NavBar : FC = () => {
 
   return(
   <Layout.Header>
-    <Row justify="end">
-   
-        {isAuth && <div style={{color: 'white'}}>Dmitry Gorbachev</div>}
+    <Row justify="end">   
+        {isAuth && <div style={{color: 'white'}}>{user.username}</div>}
         <Menu style={{minWidth: '100px'}} theme='dark' mode='horizontal' selectable={false} onClick={onClick}  items={menuItems} />
-
     </Row>
   </Layout.Header>);
 };
